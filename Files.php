@@ -49,7 +49,7 @@ class Files {
     /**
      * Download one file.
      * @param string $fileName file name.
-     * @param string|null $path the path of the file, if null will be search default path.
+     * @param string|null $path the path of the file, if null default path will be used.
      *
      */
     public function download(string $fileName, string $path = null){
@@ -66,12 +66,12 @@ class Files {
 
     /**
      * Remove Files.
-     * If you send the name and not the path will be removed the file in the default path.
-     * If you send only the path, will be removed all files and directories of the path.
-     * If you send both params will be removed the file of the path you want.
+     * If you send the name and not the path the file in the default path will be removed.
+     * If you only send the path, all files and directories of the path will be removed.
+     * If you send both params, the file of the path you want will be removed.
      * @param string|null $fileName File name to remove.
      * @param string|null $path Path if it's not the default path (end it with "/").
-     * @param bool|false $removeIfEmpty If the directory is empty will be removed.
+     * @param bool|false $removeIfEmpty If the directory is empty, will be removed.
      * @return string in fail or bool
      */
     public function remove(string $fileName = NULL, string $path = NULL, bool $removeIfEmpty = false){
@@ -114,7 +114,7 @@ class Files {
      * @param array $parameters {
      * "actual-path" The actual path.
      * "actual-file-name" The name of the file (Optional).
-     * "destination-path" The destination path, if doesn't exist will be created.
+     * "destination-path" The destination path, if it doesn't exist it will be created.
      * "destination-file-name" The new name of the copy (Optional).
      * }
      * @return string|bool string in fail.
@@ -148,7 +148,6 @@ class Files {
     /**
      * Save file. This is not necessary if you use upload().
      * You can use this if you need more control.
-     *
      * */
     public function saveFile(): string
     {
@@ -164,16 +163,16 @@ class Files {
 
 
     /**
-     * Set file. If you are using upload(), this have to be ignored it.
-     * This is only for use the saveFile().
+     * Set file. If you are using upload(), ignore this function.
+     * This is for saveFile() only.
      * @param File $file the raw file.
      */
     public function setFile($file){
         $this->file = $file;
     }
     /**
-     * Set file name. If you are using upload(), this have to be ignored it.
-     * This is only for use the saveFile().
+     * Set file name. If you are using upload(), ignore this function.
+     * his is for saveFile() only.
      * @param string $fileName the name has to include the extension.
      */
     public function setFileName(string $fileName){
@@ -187,7 +186,7 @@ class Files {
         $this->path = $path;
     }
     /**
-     * Set allowed extensions. If this is not set there's no filter.
+     * Set allowed extensions. If this is not set, there will be no filter.
      * @param array $extensions
      * */
     public function setAllowedExtensions(array $extensions){
